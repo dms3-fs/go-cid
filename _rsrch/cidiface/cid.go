@@ -1,7 +1,7 @@
 package cid
 
 import (
-	mh "github.com/multiformats/go-multihash"
+	mh "github.com/dms3-mft/go-multihash"
 )
 
 // Cid represents a self-describing content adressed identifier.

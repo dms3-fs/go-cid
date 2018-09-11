@@ -1,10 +1,10 @@
 {
   "author": "whyrusleeping",
   "bugs": {
-    "url": "https://github.com/ipfs/go-cid"
+    "url": "https://github.com/dms3-fs/go-cid"
   },
   "gx": {
-    "dvcsimport": "github.com/ipfs/go-cid"
+    "dvcsimport": "github.com/dms3-fs/go-cid"
   },
   "gxDependencies": [
     {
@@ -27,4 +27,3 @@
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
   "version": "0.8.0"
 }
-

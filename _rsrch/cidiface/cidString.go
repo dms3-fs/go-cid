@@ -4,8 +4,8 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	mbase "github.com/multiformats/go-multibase"
-	mh "github.com/multiformats/go-multihash"
+	mbase "github.com/dms3-mft/go-multibase"
+	mh "github.com/dms3-mft/go-multihash"
 )
 
 //=================

@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	mbase "github.com/multiformats/go-multibase"
-	mh "github.com/multiformats/go-multihash"
+	mbase "github.com/dms3-mft/go-multibase"
+	mh "github.com/dms3-mft/go-multihash"
 )
 
 // Copying the "silly test" idea from
@@ -316,9 +316,9 @@ func TestParse(t *testing.T) {
 		[]interface{}{NewCidV0(h).Bytes(), theHash},
 		[]interface{}{h, theHash},
 		[]interface{}{theHash, theHash},
-		[]interface{}{"/ipfs/" + theHash, theHash},
-		[]interface{}{"https://ipfs.io/ipfs/" + theHash, theHash},
-		[]interface{}{"http://localhost:8080/ipfs/" + theHash, theHash},
+		[]interface{}{"/dms3fs/" + theHash, theHash},
+		[]interface{}{"https://dms3.io/dms3fs/" + theHash, theHash},
+		[]interface{}{"http://localhost:8180/dms3fs/" + theHash, theHash},
 	}
 
 	assert := func(arg interface{}, expected string) error {

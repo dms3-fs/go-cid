@@ -1,8 +1,8 @@
 // Package cid implements the Content-IDentifiers specification
-// (https://github.com/ipld/cid) in Go. CIDs are
+// (https://github.com/dms3-ld/cid) in Go. CIDs are
 // self-describing content-addressed identifiers useful for
-// distributed information systems. CIDs are used in the IPFS
-// (https://ipfs.io) project ecosystem.
+// distributed information systems. CIDs are used in the DMS3FS
+// (https://dms3.io) project ecosystem.
 //
 // CIDs have two major versions. A CIDv0 corresponds to a multihash of type
 // DagProtobuf, is deprecated and exists for compatibility reasons. Usually,
@@ -27,8 +27,8 @@ import (
 	"fmt"
 	"strings"
 
-	mbase "github.com/multiformats/go-multibase"
-	mh "github.com/multiformats/go-multihash"
+	mbase "github.com/dms3-mft/go-multibase"
+	mh "github.com/dms3-mft/go-multihash"
 )
 
 // UnsupportedVersionString just holds an error message
@@ -129,8 +129,8 @@ var CodecToStr = map[uint64]string{
 }
 
 // NewCidV0 returns a Cid-wrapped multihash.
-// They exist to allow IPFS to work with Cids while keeping
-// compatibility with the plain-multihash format used used in IPFS.
+// They exist to allow DMS3FS to work with Cids while keeping
+// compatibility with the plain-multihash format used used in DMS3FS.
 // NewCidV1 should be used preferentially.
 func NewCidV0(mhash mh.Multihash) *Cid {
 	return &Cid{
@@ -164,8 +164,8 @@ type Cid struct {
 func Parse(v interface{}) (*Cid, error) {
 	switch v2 := v.(type) {
 	case string:
-		if strings.Contains(v2, "/ipfs/") {
-			return Decode(strings.Split(v2, "/ipfs/")[1])
+		if strings.Contains(v2, "/dms3fs/") {
+			return Decode(strings.Split(v2, "/dms3fs/")[1])
 		}
 		return Decode(v2)
 	case []byte:
@@ -415,8 +415,8 @@ func (c *Cid) UnmarshalJSON(b []byte) error {
 //
 //    { "/": "<cid-string>" }
 //
-// Note that this formatting comes from the IPLD specification
-// (https://github.com/ipld/specs/tree/master/ipld)
+// Note that this formatting comes from the DMS3LD specification
+// (https://github.com/dms3-ld/specs/tree/master/dms3ld)
 func (c Cid) MarshalJSON() ([]byte, error) {
 	return []byte(fmt.Sprintf("{\"/\":\"%s\"}", c.String())), nil
 }
@@ -427,7 +427,7 @@ func (c *Cid) KeyString() string {
 }
 
 // Loggable returns a Loggable (as defined by
-// https://godoc.org/github.com/ipfs/go-log).
+// https://godoc.org/github.com/dms3-fs/go-log).
 func (c *Cid) Loggable() map[string]interface{} {
 	return map[string]interface{}{
 		"cid": c,
